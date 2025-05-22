@@ -1,29 +1,31 @@
-#5
+#9 
 
-numero_digitado = int(input("Digite até que número quer verificar os primos: "))
+gabarito = {1 : "D", 2 : "A", 3 : "C", 4 : "B", 5 : "A", 6 : "D",
+           7 : "C", 8 : "C", 9 : "A", 10 : "B"}
 
 
+gabarito_do_aluno = []
 
 contador = 1
+while contador <= 10: 
+    questao_respondida = input(f"Ola digite aqui a opçãoq que marco na questão {contador}")
+    questao_respondida = questao_respondida.upper()
+    if questao_respondida == "A" or questao_respondida == "B" or questao_respondida == "C" or questao_respondida == "D":
+        gabarito_do_aluno.append(questao_respondida)
+        contador+=1
+    else:
+        print("Digite um valor válido de A a D")
+        continue
 
-contador_de_divisiveis_final = []
 
-while contador <= numero_digitado:
+pontuacao_aluno = 0
+questoes_erradas = 0
+for i in range(len(gabarito_do_aluno)):
+    if gabarito_do_aluno[i] == gabarito.__getitem__(i+1):
+        pontuacao_aluno += 1
+    else:
+        questoes_erradas += 1
 
-    contador_de_divisiveis = []
 
-    outro_contador = 1 
-    while outro_contador <= numero_digitado:
-        if contador % outro_contador == 0:
-            contador_de_divisiveis.append(outro_contador)
-            outro_contador += 1
-        else:
-            outro_contador+=1
-            
-    if contador_de_divisiveis == [1, contador]:
-        contador_de_divisiveis_final.append(contador)
 
-    contador+=1
-
-print(contador_de_divisiveis_final)
-
+print(f"aluno voce tirou {pontuacao_aluno}, errou {questoes_erradas} questoes")
